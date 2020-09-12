@@ -9,7 +9,7 @@
                             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                               
                                   <a href="{{route('products.create')}}" class="btn btn-primary btn-sm">
-                                                  <i class="fa fa-fw fa-plus mr-1"></i> Add New
+                                                  <i class="fa fa-fw fa-plus mr-1"></i> Add Product
                                   </a>
                              
                             </nav>
@@ -24,7 +24,7 @@
 
                 <div class="block block-rounded block-bordered">
                                 <div class="block-header block-header-default">
-                                    <h3 class="block-title">All Products</h3>
+                                    <h3 class="block-title">Product Lists</h3>
                                     <div class="block-options">
                                         <button type="button" class="btn-block-option">
                                             <i class="si si-settings"></i>
@@ -37,11 +37,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 20px;">#</th>
-                                        <th  style="width: 20%;">Product Name</th>
-                                        <th  style="width: 20%;">GST%</th>
-                                        <th  style="width: 20%;">HSN code</th>
-                                        <th  style="width: 20%;">Selling Price</th>
-                                        <th  style="width: 20%;">Action</th>
+                                        <th  style="width: 25%;">Product</th>
+                                        <th  style="width: 20%;">HSN Code</th>
+                                        <th  style="width: 15%;">Price</th>
+                                        <th  style="width: 10%;">CGST</th>
+                                        <th  style="width: 10%;">SGST</th>
+                                        <th  style="width: 10%;">IGST</th>
+                                        <th  style="width: 10%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,8 +54,10 @@
                           <td class="text-center">{{$key+1}}</td>
                           <td>{{$data->product_name}}</td>
                           <td>{{$data->hsn_code}}</td>
-                          <td>{{$data->gst}}</td>
-                          <td>{{$data->selling_amount}}</td>
+                          <td align="right">{{ number_format($data->selling_amount,2) }}</td>
+                          <td align="right">{{ number_format($data->cgst,1) }}%</td>
+                          <td align="right">{{ number_format($data->sgst,1) }}%</td>
+                          <td align="right">{{ number_format($data->igst,1) }}%</td>
                           <td>
                           <div class="dropdown">
                           <button type="button" class="btn btn-sm btn-outline-info dropdown-toggle" id="dropdown-default-outline-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

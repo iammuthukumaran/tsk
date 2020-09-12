@@ -46,7 +46,6 @@
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
                         </li>
-                        
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ url('admin/user') }}">
                                 <i class="nav-main-link-icon far fa-user"></i>
@@ -58,7 +57,15 @@
                          <li class="nav-main-item">
                             <a class="nav-main-link" href="{{ url('admin/products') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
-                                <span class="nav-main-link-name">Add Products</span>
+                                <span class="nav-main-link-name">Manage Products</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-heading">Stocks</li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ url('admin/daily-entry/create') }}">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">Stock Inwards</span>
                             </a>
                         </li>
 

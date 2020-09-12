@@ -17,7 +17,6 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('hsn_code');
-            $table->enum('if_gst', ['our_state', 'other_state'])->nullable();
             $table->float('cgst');
             $table->float('sgst');
             $table->float('igst');

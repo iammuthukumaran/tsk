@@ -32,17 +32,21 @@ Route::get('/', function () {
 Route::group([ 'prefix' => '/admin' ], function () {
   Route::resource('/products', 'TodoController');
   Route::resource('/user', 'UserController');
-  Route::resource('/dailyentry', 'DailyEntryController');
+  Route::resource('/daily-entry', 'DailyEntryController');
 });
 
+// Delete Routes
 Route::get('products/{id}/delete', 'TodoController@destroy')->name('products.destroy');
 Route::get('user/{id}/delete', 'UserController@destroy')->name('user.destroy');
 
+// Get Products 
 Route::get('/dailyentry/get-product-details','DailyEntryController@getproductdetails')->name('get-cur-product-details');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 /* Product Module */
 Route::resource('/products', 'TodoController', ['names' =>resourse_array('products')]);
  /*Method for replace route name */

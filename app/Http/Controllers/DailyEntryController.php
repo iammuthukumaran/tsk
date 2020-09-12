@@ -88,17 +88,24 @@ class DailyEntryController extends Controller
 
     public function getproductdetails(Request $request)
     {
-       $selling_amount = DB::table("todos")
-                    ->where("id",$request->id)->value('selling_amount');
-        $hsn_code = DB::table("todos")
-        ->where("id",$request->id)->value('hsn_code');
-       $gst = DB::table("todos")
-                    ->where("id",$request->id)->value('gst');
-        //$price =  Todos::select('gst')->whereId($request->id)->first();
+        $selling_amount = Todo::where("id",$request->id)->value('selling_amount');
+        $hsn_code = Todo::where("id",$request->id)->value('hsn_code');
+        $cgst = DB::table("todos")->where("id",$request->id)->value('cgst');
+        $sgst = DB::table("todos")->where("id",$request->id)->value('sgst');
+        $igst = DB::table("todos")->where("id",$request->id)->value('igst');
         
         if(!empty($selling_amount))
         {
-            return response()->json(array('status'=>1,'selling_amount'=>$selling_amount,'hsn_code'=>$hsn_code,'gst'=>$gst));
+            return response()->json(
+                array(
+                    'status'=>1,
+                    'selling_amount'=>$selling_amount,
+                    'hsn_code'=>$hsn_code,
+                    'cgst'=>$cgst,
+                    'sgst'=>$sgst,
+                    'igst'=>$igst
+                )
+            );
         }else{
             return response()->json(array('status'=>0,'selling_amount'=>0));
         }
