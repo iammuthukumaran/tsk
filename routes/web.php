@@ -28,10 +28,13 @@ Route::get('/', function () {
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('products', 'TodoController');
-//Route::get('user/create','userController@create');
-Route::resource('user', 'UserController');
-Route::resource('dailyenty', 'DailyEntryController');
+
+Route::group([ 'prefix' => '/admin' ], function () {
+  Route::resource('/products', 'TodoController');
+  Route::resource('/user', 'UserController');
+  Route::resource('/dailyentry', 'DailyEntryController');
+});
+
 Route::get('products/{id}/delete', 'TodoController@destroy')->name('products.destroy');
 Route::get('user/{id}/delete', 'UserController@destroy')->name('user.destroy');
 

@@ -17,14 +17,20 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'shop_name' => 'required',
+            'user_type' => 'required',
+            'gst_type' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required'
+        ]);
         User::create($request->all());
-        //return redirect(route('products.index'))->with('success', 'New Products Added Successfully!');
+        return redirect(route('user.index'))->with('success', 'Agent Added Successfully!');
     }
     public function index()
     {
-        //
-                $datas=User::orderBy('id','DESC')->get();
+        $datas=User::orderBy('id','DESC')->get();
         return view('admin/user/index',compact('datas'));
     }
 

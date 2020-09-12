@@ -17,8 +17,12 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->string('product_name');
             $table->string('hsn_code');
-            $table->float('gst');
+            $table->enum('if_gst', ['our_state', 'other_state'])->nullable();
+            $table->float('cgst');
+            $table->float('sgst');
+            $table->float('igst');
             $table->integer('selling_amount');            
+            $table->enum('status',['active', 'inactive'])->default('active');            
             $table->timestamps();
         });
     }

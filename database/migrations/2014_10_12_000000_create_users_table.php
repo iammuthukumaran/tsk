@@ -15,12 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('shop_name')->nullable();
             $table->string('email')->unique();
-             $table->string('user_type');
-              $table->string('gst_type')->nullable();
+            $table->enum('user_type',['buyer','seller','admin'])->default('admin');
+            $table->string('gst_type')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('alternate_phone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('bank_details')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();                        
+            $table->enum('status',['active', 'inactive'])->default('active'); 
             $table->rememberToken();
             $table->timestamps();
         });

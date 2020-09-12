@@ -46,18 +46,19 @@
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
                         </li>
+                        
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ url('admin/user') }}">
+                                <i class="nav-main-link-icon far fa-user"></i>
+                                <span class="nav-main-link-name">Buyers & Sellers</span>
+                            </a>
+                        </li>
 
                         <li class="nav-main-heading">Products</li>
                          <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ url('products') }}">
+                            <a class="nav-main-link" href="{{ url('admin/products') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">Add Products</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ url('user') }}">
-                                <i class="nav-main-link-icon far fa-credit-card"></i>
-                                <span class="nav-main-link-name">users</span>
                             </a>
                         </li>
 
