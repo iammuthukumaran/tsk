@@ -30,16 +30,33 @@ Route::get('/', function () {
 */
 
 Route::group([ 'prefix' => '/admin' ], function () {
-  Route::resource('/products', 'TodoController');
-  Route::resource('/user', 'UserController');
-  Route::resource('/daily-entry', 'DailyEntryController');
+    // Products
+    Route::resource('/products', 'TodoController');
+    // Buyers & Sellers
+    Route::resource('/user', 'UserController');
+    // Stocks
+    Route::group([ 'prefix' => '/stock' ], function (){
+      Route::get('/list', 'StockController@list')->name('stock.list');
+      Route::post('/add', 'StockController@add')->name('stock.add');
+      Route::get('/{id}/edit', 'StockController@edit')->name('stock.edit');
+      Route::post('/update', 'StockController@update')->name('stock.update');
+    });
+    // Buyer
+    Route::group([ 'prefix' => '/buyer' ], function (){
+      Route::get('/{id}/details', 'BuyerController@viewBuyer')->name('buyer.view');
+    });
+    // Seller
+    Route::group([ 'prefix' => '/seller' ], function (){
+      Route::get('/{id}/details', 'SellerController@viewSeller')->name('seller.view');
+    });
+    Route::resource('/daily-entry', 'DailyEntryController');
 });
 
 // Delete Routes
 Route::get('products/{id}/delete', 'TodoController@destroy')->name('products.destroy');
 Route::get('user/{id}/delete', 'UserController@destroy')->name('user.destroy');
 
-// Get Products 
+// Get Products
 Route::get('/dailyentry/get-product-details','DailyEntryController@getproductdetails')->name('get-cur-product-details');
 
 Auth::routes();

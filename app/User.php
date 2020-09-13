@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function buying_details()
+    {
+        return $this->hasMany(Stock::class, 'buyer_id', 'id');
+    }
 }

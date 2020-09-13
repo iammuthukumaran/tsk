@@ -20,7 +20,8 @@ class CreateTodosTable extends Migration
             $table->float('cgst');
             $table->float('sgst');
             $table->float('igst');
-            $table->integer('selling_amount');            
+            $table->double('selling_amount');            
+            $table->integer('stock')->default(0)->nullable();            
             $table->enum('status',['active', 'inactive'])->default('active');            
             $table->timestamps();
         });

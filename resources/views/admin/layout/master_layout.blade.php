@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Pasumai Dairy</title>
+        <title>TSK Admin</title>
 
-        <meta name="description" content="Pasumai Dairy is one of the leading dairy companies in Coimbatore.">
+        <meta name="description" content="Tsk is one of the leading dairy companies in Coimbatore.">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- Open Graph Meta -->
-        <meta property="og:title" content="Pasumai Dairy - Best Whole seller in Coimbatore Districts.">
+        <meta property="og:title" content="Tsk - Best Whole seller in Coimbatore Districts.">
         <meta property="og:site_name" content="pasumaidairy">
-        <meta property="og:description" content="Pasumai Dairy is one of the leading dairy companies in Coimbatore.">
+        <meta property="og:description" content="Tsk is one of the leading dairy companies in Coimbatore.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
         <meta property="og:image" content="">
@@ -28,7 +28,7 @@
 
         <!-- Stylesheets -->
          <!-- Page JS Plugins CSS -->
-         <link rel="stylesheet" href="assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+         <link rel="stylesheet" href="{{asset('assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
         <link rel="stylesheet" href="{{asset('assets/js/plugins/datatables/dataTables.bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('assets/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -110,12 +110,16 @@
         <!-- END DATE RANGE PICKER-->
 
         <!-- Page JS Plugins -->
-        <script src="assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="{{asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
         <!-- Page JS Helpers (BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Ion Range Slider + Masked Inputs plugins) -->
-        <script>jQuery(function(){ Dashmix.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'rangeslider', 'masked-inputs']); });</script>
+        <!-- <script>jQuery(function(){ Dashmix.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'rangeslider', 'masked-inputs']); });</script> -->
 
        @yield("javascript")
+
+       @jquery
+       @toastr_css
+       @toastr_js
 
  <style>
  

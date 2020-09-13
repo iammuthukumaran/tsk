@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Orangehill\Iseed\IseedServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
 
         /*
          * Application Service Providers...

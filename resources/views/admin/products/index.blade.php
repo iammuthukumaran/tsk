@@ -37,8 +37,9 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 20px;">#</th>
-                                        <th  style="width: 25%;">Product</th>
+                                        <th  style="width: 20%;">Product</th>
                                         <th  style="width: 20%;">HSN Code</th>
+                                        <th  style="width: 5%;">Stock</th>
                                         <th  style="width: 15%;">Price</th>
                                         <th  style="width: 10%;">CGST</th>
                                         <th  style="width: 10%;">SGST</th>
@@ -54,6 +55,7 @@
                           <td class="text-center">{{$key+1}}</td>
                           <td>{{$data->product_name}}</td>
                           <td>{{$data->hsn_code}}</td>
+                          <td align="center">{{$data->stock}}</td>
                           <td align="right">{{ number_format($data->selling_amount,2) }}</td>
                           <td align="right">{{ number_format($data->cgst,1) }}%</td>
                           <td align="right">{{ number_format($data->sgst,1) }}%</td>
@@ -66,8 +68,8 @@
                           <div class="dropdown-menu" aria-labelledby="dropdown-default-outline-info">
                               <a class="dropdown-item" href="{{ route('products.edit', $data->id) }}">
                               <i class="fa fa-fw fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" onclick="return confirm('Are you sure?')" href="{{ route('products.destroy', $data->id) }}">
-                              <i class="fa fa-fw fa-trash"></i> Delete</a>
+                              <!-- <a class="dropdown-item" onclick="return confirm('Are you sure?')" href="{{ route('products.destroy', $data->id) }}">
+                              <i class="fa fa-fw fa-trash"></i> Delete</a> -->
                             
                           </div>
                            </div>

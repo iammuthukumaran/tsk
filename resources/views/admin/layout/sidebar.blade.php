@@ -63,7 +63,7 @@
 
                         <li class="nav-main-heading">Stocks</li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ url('admin/daily-entry/create') }}">
+                            <a class="nav-main-link" href="{{ route('stock.list') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">Stock Inwards</span>
                             </a>
