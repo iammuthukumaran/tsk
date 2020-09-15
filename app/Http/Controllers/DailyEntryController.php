@@ -88,23 +88,19 @@ class DailyEntryController extends Controller
 
     public function getproductdetails(Request $request)
     {
-        $selling_amount = Todo::where("id",$request->id)->value('selling_amount');
-        $hsn_code = Todo::where("id",$request->id)->value('hsn_code');
-        $cgst = DB::table("todos")->where("id",$request->id)->value('cgst');
-        $sgst = DB::table("todos")->where("id",$request->id)->value('sgst');
-        $igst = DB::table("todos")->where("id",$request->id)->value('igst');
+        $product = Todo::where("id",$request->id)->first();
         
-        if(!empty($selling_amount))
+        if(!empty($product))
         {
             return response()->json(
                 array(
                     'status'=>1,
-                    'selling_amount'=>$selling_amount,
-                    'hsn_code'=>$hsn_code,
-                    'cgst'=>$cgst,
-                    'sgst'=>$sgst,
-                    'igst'=>$igst
-                )
+                    'selling_amount' => $product->selling_amount,
+                    'hsn_code' => $product->hsn_code,
+                    'cgst' => $product->cgst,
+                    'sgst' => $product->sgst,
+                    'igst' => $product->igst,
+                    'stock' => $product->stock                )
             );
         }else{
             return response()->json(array('status'=>0,'selling_amount'=>0));

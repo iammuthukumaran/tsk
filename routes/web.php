@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin/dashboard');
-});
+
 
 
 /*
@@ -28,8 +26,15 @@ Route::get('/', function () {
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect('/login');
+});
 
-Route::group([ 'prefix' => '/admin' ], function () {
+Route::group([ 'prefix' => '/admin', 'middleware' => 'auth' ], function () {
+    // Dashboards
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard');
+    })->name('dashboard');
     // Products
     Route::resource('/products', 'TodoController');
     // Buyers & Sellers
@@ -41,6 +46,10 @@ Route::group([ 'prefix' => '/admin' ], function () {
       Route::get('/{id}/edit', 'StockController@edit')->name('stock.edit');
       Route::post('/update', 'StockController@update')->name('stock.update');
     });
+    // Sales
+    Route::group([ 'prefix' => '/sales' ], function (){
+      Route::get('/list', 'SaleController@list')->name('sale.list');
+    });
     // Buyer
     Route::group([ 'prefix' => '/buyer' ], function (){
       Route::get('/{id}/details', 'BuyerController@viewBuyer')->name('buyer.view');
@@ -48,6 +57,16 @@ Route::group([ 'prefix' => '/admin' ], function () {
     // Seller
     Route::group([ 'prefix' => '/seller' ], function (){
       Route::get('/{id}/details', 'SellerController@viewSeller')->name('seller.view');
+    });
+    // Bills
+    Route::group([ 'prefix' => '/bill' ], function (){
+      Route::get('/create/{bill_type}', 'BillsController@createBill')->name('bill.create');
+      Route::get('/make/{bill_id}/{bill_type}', 'BillsController@makeBill')->name('bill.make');
+      Route::get('/list', 'BillsController@listBill')->name('bill.list');
+      Route::post('/save', 'BillsController@saveBill')->name('bill.save');
+      Route::get('/delete/{sale_id}/{bill_id}/{bill_type}', 'BillsController@deleteBill')->name('bill.delete');
+      Route::get('/generate/{bill_id}/{bill_type}', 'BillsController@generateBill')->name('bill.generate');
+      Route::get('/view/{bill_id}/{bill_type}', 'BillsController@viewBill')->name('bill.view');
     });
     Route::resource('/daily-entry', 'DailyEntryController');
 });
@@ -61,7 +80,7 @@ Route::get('/dailyentry/get-product-details','DailyEntryController@getproductdet
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 /* Product Module */

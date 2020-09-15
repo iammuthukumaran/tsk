@@ -81,7 +81,7 @@
                     @if($data->user_type == 'buyer')
                     <a class="dropdown-item" href="{{ route('buyer.view', $data->id) }}"> <i class="fa fa-fw fa-eye"></i> Purchase History</a>
                     @else
-                    <a class="dropdown-item" href="{{ route('user.edit', $data->id) }}"> <i class="fa fa-fw fa-eye"></i> Sale History</a>
+                    <a class="dropdown-item" href="{{ route('seller.view', $data->id) }}"> <i class="fa fa-fw fa-eye"></i> Sale History</a>
                     @endif
                     <a class="dropdown-item" href="{{ route('user.edit', $data->id) }}">
                       <i class="fa fa-fw fa-edit"></i> Edit</a>

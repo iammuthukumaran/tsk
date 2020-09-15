@@ -41,13 +41,13 @@
 
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link {{{ (Request::is('admin/dashboard') ? 'active' : '') }}}" href="{{ url('') }}">
+                            <a class="nav-main-link {{ (Request::is('admin/dashboard') ? 'active' : '') }}" href="{{ route('dashboard') }}">
                                 <i class="nav-main-link-icon far fa-paper-plane"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ url('admin/user') }}">
+                            <a class="nav-main-link {{ (Request::is('admin/user*') ? 'active' : '') }} {{ (Request::is('admin/buyer*') ? 'active' : '') }} {{ (Request::is('admin/seller*') ? 'active' : '') }}" href="{{ url('admin/user') }}">
                                 <i class="nav-main-link-icon far fa-user"></i>
                                 <span class="nav-main-link-name">Buyers & Sellers</span>
                             </a>
@@ -55,7 +55,7 @@
 
                         <li class="nav-main-heading">Products</li>
                          <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ url('admin/products') }}">
+                            <a class="nav-main-link {{ (Request::is('products/create') ? 'active' : '') }} {{ (Request::is('admin/products*') ? 'active' : '') }}" href="{{ url('admin/products') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">Manage Products</span>
                             </a>
@@ -63,9 +63,43 @@
 
                         <li class="nav-main-heading">Stocks</li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('stock.list') }}">
+                            <a class="nav-main-link {{ (Request::is('admin/stock*') ? 'active' : '') }}" href="{{ route('stock.list') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">Stock Inwards</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ (Request::is('admin/sales*') ? 'active' : '') }}" href="{{ route('sale.list') }}">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">Sales Outwards</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-heading">Bills</li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link  {{ (Request::is('admin/bill/make/*/sale') ? 'active' : '') }}" href="{{ route('bill.create', [ 'bill_type' => 'sale' ]) }}">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">New Bill</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link  {{ (Request::is('admin/bill/make/*/quotation') ? 'active' : '') }}" href="{{ route('bill.create', [ 'bill_type' => 'quotation' ]) }}">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">New Quotation</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ (Request::is('admin/bill/list') ? 'active' : '') }}" href="{{ route('bill.list') }}">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">Bills & Quotations</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-heading">Reports</li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="">
+                                <i class="nav-main-link-icon far fa-credit-card"></i>
+                                <span class="nav-main-link-name">Sales Report</span>
                             </a>
                         </li>
 

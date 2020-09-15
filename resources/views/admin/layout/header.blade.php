@@ -18,20 +18,13 @@
                     <div>
                         <!-- User Dropdown -->
                         <div class="dropdown d-inline-block">
-                            <button type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-fw fa-user d-sm-none"></i>
-                               
-                                <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="page-header-user-dropdown">
-                               
-                                <div class="p-2">
-                                   
-
-                                    
-                                </div>
-                            </div>
+                            <button onclick="event.preventDefault();document.getElementById('logout-form').submit();" type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-fw fa-user d-sm-none"></i> Logout
+                            </button>                           
                         </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                        </form>
                         <!-- END User Dropdown -->
 
                     </div>

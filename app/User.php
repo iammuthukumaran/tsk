@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Stock::class, 'buyer_id', 'id');
     }
+    public function sale_details()
+    {
+        return $this->hasMany(Bill::class, 'seller_id', 'id')->orderBy('id', 'desc')->where('bill_type', 'sale');
+    }
 }

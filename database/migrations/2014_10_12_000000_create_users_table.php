@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('shop_name')->nullable();
             $table->string('email')->unique();
             $table->enum('user_type',['buyer','seller','admin'])->default('admin');
-            $table->string('gst_type')->nullable();
+            $table->enum('gst_type', [ 'our_state', 'other_state'])->nullable();
             $table->string('phone')->nullable();
             $table->string('alternate_phone')->nullable();
             $table->string('address')->nullable();
