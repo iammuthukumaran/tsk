@@ -153,9 +153,7 @@
                             <th class="text-center" style="width: 20px;">#</th>
                             <th>Product Name</th>
                             <th>HSN</th>
-                            <th>CGST</th>
-                            <th>SGST</th>
-                            <th>IGST</th>
+                            <th>GST</th>
                             <th>Qty</th>
                             <th>Price</th>
                             <th>Total</th>
@@ -169,9 +167,7 @@
                             <td class="text-center">{{ $i+1 }}</td>
                             <td>{{ $sale->product_name }}</td>
                             <td>{{ $sale->hsn_code }}</td>
-                            <td class="text-center">{{ $sale->cgst }}%</td>
-                            <td class="text-center">{{ $sale->sgst }}%</td>
-                            <td class="text-center">{{ $sale->igst }}%</td>
+                            <td class="text-center">{{ $sale->cgst + $sale->sgst + $sale->igst }}%</td>
                             <td class="text-center">{{ $sale->quantity }}</td>
                             <td class="text-right">{{ number_format($sale->selling_price,2)  }}</td>
                             <td class="text-right">{{ number_format($sale->total,2)  }}</td>
@@ -185,7 +181,7 @@
 
                         @if(count($bill->sales)>0)
                         <tr>
-                            <td colspan="8" class="text-right"><b>Total:</b></td>
+                            <td colspan="6" class="text-right"><b>Total:</b></td>
                             <td class="text-right"><b>{{ number_format($bill->total,2) }}</b></td>
                             <td>
                             <a href="{{ route('bill.generate', [ 'bill_id' => $bill->id, 'bill_type' => $bill->bill_type ]) }}" class="btn btn-success">Generate Bill</a>

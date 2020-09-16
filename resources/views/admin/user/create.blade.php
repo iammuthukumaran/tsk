@@ -66,8 +66,8 @@
                                     
                                     <div class="col-lg-6 col-xl-6">
                                         <div class="form-group">
-                                            <label for="example-text-input"> Email <span class="text-danger">*</span></label>
-                                            <input type="text" name="email" class="form-control" value="{{  old('email') }}" placeholder="Enter Email" required>
+                                            <label for="example-text-input"> Email </label>
+                                            <input type="text" name="email" class="form-control" value="{{  old('email') }}" placeholder="Enter Email">
                                         </div>
                                     </div>                                  
                                    

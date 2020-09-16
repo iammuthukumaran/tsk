@@ -97,7 +97,7 @@
 
                         <li class="nav-main-heading">Reports</li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="">
+                            <a class="nav-main-link" href="{{ route('report.sales') }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">Sales Report</span>
                             </a>

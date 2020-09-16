@@ -117,9 +117,9 @@
 
        @yield("javascript")
 
-       @jquery
-       @toastr_css
-       @toastr_js
+       <!-- @jquery -->
+ <!-- s      @toastr_css
+       @toastr_js -->
 
  <style>
  

@@ -69,6 +69,10 @@ Route::group([ 'prefix' => '/admin', 'middleware' => 'auth' ], function () {
       Route::get('/view/{bill_id}/{bill_type}', 'BillsController@viewBill')->name('bill.view');
     });
     Route::resource('/daily-entry', 'DailyEntryController');
+    // Seller
+    Route::group([ 'prefix' => '/report' ], function (){
+      Route::get('/sales', 'ReportController@salesReport')->name('report.sales');
+    });
 });
 
 // Delete Routes
