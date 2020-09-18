@@ -12,11 +12,10 @@
                 <div class="col-md-12 bill-canvas" id="bill-canvas">
                         <div class="table-responsive" style="border: 1px solid grey; padding:20px;">
                             <table class="table">
-                                <thead>
                                     <tr>
                                         <td colspan="7" align="Center">
-                                            <h4>TSK Traders Pvt Ltd</h4>
-                                            <h5>No1, Melamasi Street, Madurai - 624401</h5>
+                                            <h4>{{ $shop->shop_name }}</h4>
+                                            <h5>{{ $shop->address }}</h5>
                                         </td>
                                     </tr>
                                     <tr>
@@ -25,8 +24,8 @@
                                             <b style="color: green;">{{ ucfirst($bill->seller->shop_name) }}</b><br> 
                                             <b>{{ $bill->seller->phone }}</b>
                                         </td>
-                                        <td colspan="4" class="align-center"> @if($bill->bill_type != 'sale') <b style="color:red;">Quotation</b> @endif </td>
-                                        <td colspan="2">
+                                        <td colspan="2" class="align-center"> @if($bill->bill_type != 'sale') <b style="color:red;">Quotation</b> @endif </td>
+                                        <td colspan="3">
                                             <b>Bill.No:</b> <span style="color:red;">
                                             #@if($bill->bill_type != 'sale')Quot-@endif{{ $bill->bill_number }}
                                             </span><br>
@@ -37,49 +36,40 @@
                                         <td colspan="7">Products</td>
                                     </tr>
                                     <tr>
-                                        <th class="text-center" style="width: 20px;">#</th>
-                                        <th>Product</th>
-                                        <th>CGST</th>
-                                        <th>SGST</th>
-                                        <th>IGST</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
+                                        <td>#</td>
+                                        <td>Product</td>
+                                        <td>HSN</td>
+                                        <td>GST</td>
+                                        <td>Qty</td>
+                                        <td>Price</td>
+                                        <td>Total</td>
                                     </tr>
-                                </thead>
-                                <tbody>
 
                                     @foreach($bill->sales as $i => $sale)
                                     <tr>
-                                        <td class="text-center">{{ $i+1 }}</td>
-                                        <td width="30%" class="product">
-                                            {{ $sale->product_name }}
-                                            <br><b>{{ $sale->hsn_code }}</b>
-                                        </td>
-                                        <td width="10%" class="text-center">{{ $sale->cgst }}%</td>
-                                        <td width="10%" class="text-center">{{ $sale->sgst }}%</td>
-                                        <td width="10%" class="text-center">{{ $sale->igst }}%</td>
-                                        <td width="10%" class="text-center">{{ $sale->quantity }}</td>
-                                        <td width="15%" class="text-right">{{ number_format($sale->selling_price,2)  }}</td>
-                                        <td width="15%" class="text-right">{{ number_format($sale->total,2)  }}</td>
+                                        <td>{{ $i+1 }}</td>
+                                        <td> {{ $sale->product_name }}</td>
+                                        <td> {{ $sale->hsn_code }}</td>
+                                        <td >{{ $sale->cgst + $sale->sgst + $sale->igst }}%</td>
+                                        <td >{{ $sale->quantity }}</td>
+                                        <td >{{ number_format($sale->selling_price,2)  }}</td>
+                                        <td >{{ number_format($sale->total,2)  }}</td>
                                     </tr>
                                     @endforeach
 
                                     @if(count($bill->sales)>0)
                                     <tr>
-                                        <td colspan="7" class="text-right"><b>Total:</b></td>
+                                        <td colspan="6" class="text-right"><b>Total:</b></td>
                                         <td class="text-right"><b>{{ number_format($bill->total,2) }}</b></td>
                                     </tr>
                                     @endif
-
-                                </tbody>
                             </table>
                         </div> 
                 </div>
                             
                 <div class="col-md-12 bill-control">
                     <a href="{{ route('bill.list') }}" class="btn btn-sm btn-info"> Bill List</a>
-                    <!-- <a href="" class="btn btn-sm btn-success"> Print</a> -->
+                    <a onclick="printJS('bill-canvas', 'html')" class="btn btn-sm btn-success"> Print</a>
                     <!-- https://stackoverflow.com/questions/56874016/can-i-use-window-print-to-export-a-page-to-pdf-automatically -->
                     <a onclick="ExportPdf()" class="btn btn-sm btn-warning"> Download</a>
                 </div>

@@ -32,9 +32,7 @@ Route::get('/', function () {
 
 Route::group([ 'prefix' => '/admin', 'middleware' => 'auth' ], function () {
     // Dashboards
-    Route::get('/dashboard', function () {
-        return view('admin/dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
     // Products
     Route::resource('/products', 'TodoController');
     // Buyers & Sellers
@@ -71,7 +69,12 @@ Route::group([ 'prefix' => '/admin', 'middleware' => 'auth' ], function () {
     Route::resource('/daily-entry', 'DailyEntryController');
     // Seller
     Route::group([ 'prefix' => '/report' ], function (){
-      Route::get('/sales', 'ReportController@salesReport')->name('report.sales');
+      Route::any('/sales', 'ReportController@salesReport')->name('report.sales');
+    });
+    // Setting
+    Route::group([ 'prefix' => '/setting' ], function (){
+      Route::any('/view', 'SettingController@settings')->name('setting.view');
+      Route::any('/update', 'SettingController@update')->name('setting.update');
     });
 });
 

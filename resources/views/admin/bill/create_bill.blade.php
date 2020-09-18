@@ -52,13 +52,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Add Seller</label>
-                        <select name="seller_id" class="form-control" required>
-                            <option value="" >Select Seller</option>
+                        <select name="seller_id" id="seller_id" class="selectpicker form-control" data-show-subtext="true" data-live-search="true" required>
+                            <option value=""></option>
                             @foreach($sellers as $seller)
                             <option value="{{ $seller->id }}" @if($bill->seller_id == $seller->id) selected @endif>{{ ucfirst($seller->shop_name) }} ({{ ucfirst($seller->name) }})</option>
                             @endforeach
                         </select>
                     </div>
+                    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+                   
                     <div class="col-md-2">
                         <label>Billing Type</label>
                         @if($bill_type == 'sale')
@@ -77,8 +81,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Product Name / Stock / HSN</label>
-                        <select id="product_id" name="product_id" class="form-control">
-                            <option value="">Select Product</option>
+                        <select id="product_id" name="product_id" class="selectpicker form-control" data-show-subtext="true" data-live-search="true" required>
+                            <option value=""></option>
                             @foreach($products as $product)
                             <option value="{{ $product->id }}">{{ ucfirst($product->product_name) }} ({{ $product->stock }}) {{ $product->hsn_code }}</option>
                             @endforeach
@@ -195,4 +199,59 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="dropdown dropdown-scroll">
+<button class="btn btn-default event-button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    <span>Search</span>
+    <span class="caret"></span>
+</button>
+<div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <div class="input-group input-group-sm search-control">
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+        </span>
+        <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <ul class="dropdown-list">
+        <li role="presentation">
+            <a>gfgsgsgf</a>
+        </li>
+    </ul>
+</div>
+
+<style>
+    .dropdown.dropdown-scroll .dropdown-list{
+    max-height: 233px;
+    overflow-y: auto;
+    list-style-type: none;
+    padding-left: 10px;
+    margin-bottom: 0px;
+}
+.dropdown-list  li{
+    font-size: 14px;
+    height: 20px;
+}
+
+.dropdown-list  li > a{
+    color: black;
+}
+.dropdown-list a:hover{
+   color: black;
+}
+
+.dropdown-list li:hover{
+    background-color: lightgray;
+}
+</style>
     @endsection

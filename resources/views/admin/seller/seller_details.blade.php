@@ -26,18 +26,18 @@
                 </div>
             <div class="block-content">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                    <table id="sales-report" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                    <th class="text-center">#</th>
-                                    <th>Date</th>
-                                    <th style="width: 20%;">Product</th>
-                                    <th>CGST</th>
-                                    <th>SGST</th>
-                                    <th>IGST</th>
-                                    <th>Qty</th>
-                                    <th style="width: 10%;">Price</th>
-                                    <th style="width: 15%;">Total</th>
+                                        <th class="text-center">#</th>
+                                        <th>Date</th>
+                                        <th style="width: 20%;">Product</th>
+                                        <th>CGST</th>
+                                        <th>SGST</th>
+                                        <th>IGST</th>
+                                        <th>Qty</th>
+                                        <th style="width: 10%;">Price</th>
+                                        <th style="width: 25%;">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,6 +66,12 @@
                                 @endforeach
 
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="8" style="text-align:right">Total:</th>
+                                        <th colspan="1"></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                     </div>
                                 </div>
@@ -74,6 +80,47 @@
 
                 </div>
                 <!-- END Page Content -->
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+     $(document).ready(function() {
+       
+       var table = $('#sales-report').DataTable( {
+           "footerCallback": function ( row, data, start, end, display ) {
+               var api = this.api(), data;
+   
+               // Remove the formatting to get integer data for summation
+               var intVal = function ( i ) {
+                   return typeof i === 'string' ?
+                       i.replace(/[\Rs ,]/g, '')*1 :
+                       typeof i === 'number' ?
+                           i : 0;
+               };
+               // Total over all pages
+               total = api
+                   .column( 8 )
+                   .data()
+                   .reduce( function (a, b) {
+                       return intVal(a) + intVal(b);
+                   }, 0 );
+               console.log('total', total);
+   
+               // Total over this page
+               pageTotal = api
+                   .column( 8, { page: 'current'} )
+                   .data()
+                   .reduce( function (a, b) {
+                       return intVal(a) + intVal(b);
+                   }, 0 );
+               console.log('pageTotal', pageTotal);
+               // Update footer
+               $( api.column( 8 ).footer() ).html(
+                   'Rs.'+pageTotal +' of ( Rs.'+ total +' )'
+               );
+           },
+           orderCellsTop: true,
+           fixedHeader: true
+       } );
+   } );
+</script>
 
 @endsection

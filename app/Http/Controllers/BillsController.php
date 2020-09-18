@@ -111,9 +111,11 @@ class BillsController extends Controller
 
     public function viewBill($bill_id, $bill_type)
     {
+        $shop = User::where('id', '1')->first();
         $bill = Bill::with('sales')->where('id', $bill_id)->first();
         return view('admin.bill.view_bill')->with([
-            'bill' => $bill
+            'bill' => $bill,
+            'shop' => $shop
         ]);
     }
 }
