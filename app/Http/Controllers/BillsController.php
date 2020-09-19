@@ -14,11 +14,15 @@ class BillsController extends Controller
     {
         $bill = new Bill;
         $bill->save();
-        Bill::where('id', $bill->id)->update([
-            'bill_number' => "BILL".sprintf("%04d", $bill->id),
-            'bill_date' => date('Y-m-d'),
-            'bill_type' => $bill_type
-        ]);
+        $old_bill_count = Bill::where('bill_type', 'sale')->count();
+        if($bill_type == 'sale'){
+            Bill::where('id', $bill->id)->update([
+                'bill_number' => sprintf("%03d", $old_bill_count + 1),
+                'bill_date' => date('Y-m-d'),
+                'bill_type' => $bill_type
+            ]);
+        }
+
         return redirect(route('bill.make', [ 'bill_id' => $bill->id, 'bill_type' => $bill_type ]));
     }
 

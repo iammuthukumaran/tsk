@@ -13,10 +13,14 @@
                         <div class="table-responsive" style="border: 1px solid grey; padding:20px;">
                             <table class="table">
                                     <tr>
-                                        <td colspan="7" align="Center">
-                                            <h4>{{ $shop->shop_name }}</h4>
-                                            <h5>{{ $shop->address }}</h5>
+                                        <td colspan="7" align="Center">                                            
+                                            <b>{{ strtoupper($shop->shop_name) }}</b>
+                                            <p>{{ $shop->address }} <br>
+                                            {{ $shop->shop_address }} </p>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">GSTIN: {{ strtoupper($shop->gst_number) }}</span></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Customer Detail: 
@@ -26,10 +30,11 @@
                                         </td>
                                         <td colspan="2" class="align-center"> @if($bill->bill_type != 'sale') <b style="color:red;">Quotation</b> @endif </td>
                                         <td colspan="3">
-                                            <b>Bill.No:</b> <span style="color:red;">
+                                            <b>Invoice:</b> <span style="color:red;">
                                             #@if($bill->bill_type != 'sale')Quot-@endif{{ $bill->bill_number }}
                                             </span><br>
                                             Date: {{ $bill->bill_date }}
+                                            <span style="font-size:12px;" class="pull-left">
                                         </td>
                                     </tr>
                                     <tr>
@@ -59,10 +64,28 @@
 
                                     @if(count($bill->sales)>0)
                                     <tr>
-                                        <td colspan="6" class="text-right"><b>Total:</b></td>
+                                        <td colspan="2">
+                                            Bank Details: <br>
+                                            {{ $shop->bank_details }}
+                                        </td>
+                                        <td colspan="4" class="text-right"><b>Total:</b></td>
                                         <td class="text-right"><b>{{ number_format($bill->total,2) }}</b></td>
                                     </tr>
                                     @endif
+                                    <tr>
+                                        <td colspan="7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">* Once Sold Goods can't be return Back.</td>
+                                        <td colspan="3">For: {{ strtoupper($shop->shop_name) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <td colspan="3">Authorized Signature</td>
+                                    </tr>
                             </table>
                         </div> 
                 </div>

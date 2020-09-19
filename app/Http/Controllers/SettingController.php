@@ -18,7 +18,9 @@ class SettingController extends Controller
         // dd($request->all());
         $datas = User::where('id','1')->update([
             'shop_name' => $request->shop_name,
+            'gst_number' => $request->gst_number,
             'address' => $request->address,
+            'shop_address' => $request->shop_address,
             'bank_details' => $request->bank_details,
             'name' => $request->name,
             'email' => $request->email,

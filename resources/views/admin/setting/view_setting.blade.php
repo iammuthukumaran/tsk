@@ -19,12 +19,24 @@
                                         <input type="text" name="shop_name" class="form-control {{$errors->has('shop_name') ?  'alert alert-danger' : ''}}" value="{{  $datas->shop_name }}" placeholder="Enter Shop Name" required>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input">GST Number <span class="text-danger">*</span></label>
+                                        <input type="text" name="gst_number" class="form-control {{$errors->has('gst_number') ?  'alert alert-danger' : ''}}" value="{{  $datas->gst_number }}" placeholder="Enter GST no" required>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="row push">
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="form-group">
-                                        <label for="example-text-input"> Address </label>
+                                        <label for="example-text-input"> Address 1 </label>
                                         <textarea class="form-control" name="address">{{  $datas->address }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label for="example-text-input"> Address 2 </label>
+                                        <textarea class="form-control" name="shop_address">{{  $datas->shop_address }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-xl-6">
@@ -59,7 +71,7 @@
                                     <div class="col-lg-6 col-xl-6">
                                         <div class="form-group">
                                             <label for="example-text-input">Admin Password</label>
-                                            <input type="text" name="password" class="form-control" value="{{  $datas->alternate_phone }}" placeholder="Enter Alternate Mobile">
+                                            <input type="text" name="password" class="form-control" value="{{  $datas->alternate_phone }}" placeholder="Password">
                                         </div>
                                     </div> 
                                 </div>  
