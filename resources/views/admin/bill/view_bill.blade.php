@@ -16,7 +16,8 @@
                                         <td colspan="7" align="Center">                                            
                                             <b>{{ strtoupper($shop->shop_name) }}</b>
                                             <p>{{ $shop->address }} <br>
-                                            {{ $shop->shop_address }} </p>
+                                            {{ $shop->shop_address }} <br>
+                                        Cell: {{ $shop->phone }} </p>
                                         </td>
                                     </tr>
                                     <tr>
