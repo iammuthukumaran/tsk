@@ -22,6 +22,11 @@ class BillsController extends Controller
                 'bill_type' => $bill_type
             ]);
         }
+        else{
+            Bill::where('id', $bill->id)->update([
+                'bill_type' => $bill_type
+            ]);
+        }
 
         return redirect(route('bill.make', [ 'bill_id' => $bill->id, 'bill_type' => $bill_type ]));
     }

@@ -211,7 +211,7 @@
 
 
 
-    <div class="dropdown dropdown-scroll">
+    <!-- <div class="dropdown dropdown-scroll">
 <button class="btn btn-default event-button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
     <span>Search</span>
     <span class="caret"></span>
@@ -228,7 +228,7 @@
             <a>gfgsgsgf</a>
         </li>
     </ul>
-</div>
+</div> -->
 
 <style>
     .dropdown.dropdown-scroll .dropdown-list{
