@@ -46,9 +46,18 @@ class BillsController extends Controller
 
     public function listBill()
     {
-        $bills = Bill::with('sales', 'seller')->orderBy('id', 'desc')->get();
+        $bills = Bill::where('bill_type', 'sale')->with('sales', 'seller')->orderBy('id', 'desc')->get();
 
         return view('admin.bill.list_bill')->with([
+            'bills' => $bills
+        ]);
+    }
+
+    public function listQuotation()
+    {
+        $bills = Bill::where('bill_type', 'quotation')->with('sales', 'seller')->orderBy('id', 'desc')->get();
+
+        return view('admin.bill.list_quotation')->with([
             'bills' => $bills
         ]);
     }

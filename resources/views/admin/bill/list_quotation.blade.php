@@ -6,11 +6,11 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">List of Bills</h1>
+            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">List of Quotations</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
 
-                <a href="{{ route('bill.create', [ 'bill_type' => 'sale' ]) }}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-fw fa-plus mr-1"></i> New Bill
+                <a href="{{ route('bill.create', [ 'bill_type' => 'quotation' ]) }}" class="btn btn-primary btn-sm">
+                    <i class="fa fa-fw fa-plus mr-1"></i> New Quotation
                 </a>
 
             </nav>
@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 20px;">#</th>
-                            <th>Bill Number</th>
+                            <th>Bill Type</th>
                             <th>Billed</th>
                             <th>Date</th>
                             <th>Seller Details</th>

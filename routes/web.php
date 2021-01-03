@@ -66,6 +66,9 @@ Route::group([ 'prefix' => '/admin', 'middleware' => 'auth' ], function () {
       Route::get('/generate/{bill_id}/{bill_type}', 'BillsController@generateBill')->name('bill.generate');
       Route::get('/view/{bill_id}/{bill_type}', 'BillsController@viewBill')->name('bill.view');
     });
+    Route::group([ 'prefix' => '/quotation' ], function (){
+      Route::get('/list', 'BillsController@listQuotation')->name('quotation.list');
+    });
     Route::resource('/daily-entry', 'DailyEntryController');
     // Seller
     Route::group([ 'prefix' => '/report' ], function (){

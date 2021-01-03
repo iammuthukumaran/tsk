@@ -75,8 +75,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-main-heading">Bills</li>
-                        <li class="nav-main-item">
+                        <li class="nav-main-heading">Bills & Quotations</li>
+                        <!-- <li class="nav-main-item">
                             <a class="nav-main-link  {{ (Request::is('admin/bill/make/*/sale') ? 'active' : '') }}" href="{{ route('bill.create', [ 'bill_type' => 'sale' ]) }}">
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">New Bill</span>
@@ -87,11 +87,17 @@
                                 <i class="nav-main-link-icon far fa-credit-card"></i>
                                 <span class="nav-main-link-name">New Quotation</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-main-item">
                             <a class="nav-main-link {{ (Request::is('admin/bill/list') ? 'active' : '') }}" href="{{ route('bill.list') }}">
                                 <i class="nav-main-link-icon far fa-file"></i>
-                                <span class="nav-main-link-name">Bills & Quotations</span>
+                                <span class="nav-main-link-name">Bills</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ (Request::is('admin/quotation/list') ? 'active' : '') }}" href="{{ route('quotation.list') }}">
+                                <i class="nav-main-link-icon far fa-file"></i>
+                                <span class="nav-main-link-name">Quotations</span>
                             </a>
                         </li>
 
