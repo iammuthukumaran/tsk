@@ -9,8 +9,8 @@
     <div class="content">
         <div class="block block-rounded block-bordered">
             <div class="row">
-                <div class="col-md-12 bill-canvas" id="bill-canvas">
-                        <div class="table-responsive" style="border: 1px solid grey; padding:20px;">
+                <div class="bill-canvas" id="bill-canvas">
+                        <div>
                             <table class="table">
                                     <tr>
                                         <td colspan="7" align="Center">                                            
@@ -105,6 +105,8 @@
     <style>
         .bill-canvas{
             padding: 30px;
+            width: 8.5cm !important;
+            height:100%;
         }
         td.text-center, td.product {
             font-size: 12px;
